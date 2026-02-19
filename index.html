@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MATCH 4 CHIPS</title>
+</head>
+
+<body>
+    <canvas id="bg"></canvas>
+    <div class="logo">
+        <img src="logo.png" class="logo1" />
+    </div>
+    <div class="intro" align="center">
+        <h1>Match 4 Chips</h1>
+        <h2>Connect your 4 chips to Win!!</h2><br><br>
+        <button onclick="startgame()" type="button" class="sbtn">START</button><br><br><br><br>
+        <button onclick="restartgame()" type="button" class="restart">RESTART</button>
+    </div>
+    <br>
+    <br>
+    <div class="container" align="center">
+        <table class="board">
+            <tr>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+            </tr>
+            <tr>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+            </tr>
+            <tr>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+            </tr>
+            <tr>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+            </tr>
+            <tr>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+                <td><button type="button"></button></td>
+            </tr>
+
+        </table>
+    </div>
+<audio id="dropSound">
+  <source src="https://actions.google.com/sounds/v1/cartoon/pop.ogg">
+</audio>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="bgscript.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

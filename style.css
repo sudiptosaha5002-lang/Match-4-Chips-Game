@@ -1,0 +1,150 @@
+body {
+    background-color: rgb(17, 50, 83);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background: #0f172a; 
+}
+
+.logo {
+    position: absolute;
+    margin: 5px 1200px 450px 0px;
+}
+
+.logo1 {
+    height: 140px;
+    width: 185px;
+}
+
+.container {
+    border: 5px solid rgb(255, 252, 252);
+    border-radius: 20px;
+    height: 550px;
+    width: 750px;
+    background-color: aqua;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.board button {
+    height: 98px;
+    width: 98px;
+    margin: 1px;
+    border: 4.5px solid rgb(5, 60, 46);
+    border-radius: 50%;
+    background-color: rgb(125, 121, 121);
+    cursor: pointer;
+}
+
+.intro {
+    text-transform: uppercase;
+    color: aqua;
+    font-family: orbitron;
+    font-size: 10px;
+    margin-left: 45px;
+}
+
+.intro>h1 {
+    font-size: 40px;
+}
+
+
+.sbtn {
+    border: 3px solid rgb(255, 255, 255);
+    background-color: rgb(89, 177, 140);
+    border-radius: 16px;
+    height: 45px;
+    width: 96px;
+    font-family: orbitron, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    color: rgb(189, 236, 221);
+    cursor: pointer;
+}
+
+.sbtn:hover{
+    height: 55px;
+    width: 106px;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.4),
+        0 10px 18px rgba(0,0,0,0.4);
+}
+
+.sbtn:active{
+    transform: translateY(1px) scale(0.98);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        0 4px 6px rgba(0,0,0,0.3);
+}
+
+.restart{
+    border: 3px solid rgb(192, 241, 45);
+    background-color: rgb(71, 171, 68);
+    border-radius: 16px;
+    height: 45px;
+    width: auto;
+    font-family: orbitron, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    color: rgb(209, 248, 209);
+    cursor: pointer;
+}
+
+.restart:hover{
+    height: 55px;
+    width: auto;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.4),
+        0 10px 18px rgba(0,0,0,0.4);
+}
+
+.restart:active{
+    transform: translateY(1px) scale(0.98);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        0 4px 6px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        width: 95vw;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .board button {
+        width: 12vw;
+        height: 12vw;
+        max-width: 60px;
+        max-height: 60px;
+    }
+
+    .logo {
+        position: static;
+        margin: 10px;
+    }
+
+    .intro {
+        margin: 0;
+        text-align: center;
+    }
+}
