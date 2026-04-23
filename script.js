@@ -15,10 +15,22 @@ var table = $('table tr');
 
 
 function startgame() {
-    player1 = prompt("Enter Player-1 name>>");
-    player1Color = prompt("Choose Player-1 color (red / blue / green / yellow / pink)","blue");
-    player2 = prompt("Enter Player-2 name>>");
-    player2Color = prompt("Choose Player-2 color (red / blue / green / yellow / pink)","pink");
+    var p1 = prompt("Enter Player-1 name>>");
+    if (!p1 || p1.trim() === "") { alert("Player 1 name is required!"); return; }
+
+    var p1c = prompt("Choose Player-1 color (red / blue / green / yellow / pink)","blue");
+    if (!p1c || p1c.trim() === "") { alert("Player 1 color is required!"); return; }
+
+    var p2 = prompt("Enter Player-2 name>>");
+    if (!p2 || p2.trim() === "") { alert("Player 2 name is required!"); return; }
+
+    var p2c = prompt("Choose Player-2 color (red / blue / green / yellow / pink)","pink");
+    if (!p2c || p2c.trim() === "") { alert("Player 2 color is required!"); return; }
+
+    player1 = p1;
+    player1Color = p1c;
+    player2 = p2;
+    player2Color = p2c;
 
     currentPlayer = 1;
     currentName = player1;

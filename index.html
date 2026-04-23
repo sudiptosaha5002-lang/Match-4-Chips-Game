@@ -13,15 +13,16 @@
     <div class="logo">
         <img src="logo.png" class="logo1" />
     </div>
-    <div class="intro" align="center">
-        <h1>Match 4 Chips</h1>
-        <h2>Connect your 4 chips to Win!!</h2><br><br>
-        <button onclick="startgame()" type="button" class="sbtn">START</button><br><br><br><br>
-        <button onclick="restartgame()" type="button" class="restart">RESTART</button>
-    </div>
-    <br>
-    <br>
-    <div class="container" align="center">
+    <div class="content-wrapper">
+        <div class="intro">
+            <h1>Match 4 Chips</h1>
+            <h2>Connect your 4 chips to Win!!</h2>
+            <div class="btn-group">
+                <button onclick="startgame()" type="button" class="sbtn">START</button>
+                <button onclick="restartgame()" type="button" class="restart">RESTART</button>
+            </div>
+        </div>
+        <div class="container" align="center">
         <table class="board">
             <tr>
                 <td><button type="button"></button></td>
@@ -70,6 +71,7 @@
             </tr>
 
         </table>
+    </div>
     </div>
 <audio id="dropSound">
   <source src="https://actions.google.com/sounds/v1/cartoon/pop.ogg">
