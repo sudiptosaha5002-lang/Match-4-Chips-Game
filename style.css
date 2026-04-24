@@ -149,6 +149,120 @@ body {
     display: block;
 }
 
+/* Download Section */
+.download-section {
+    width: 95vw;
+    max-width: 1400px;
+    text-align: center;
+    margin: 40px auto 20px;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.download-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(20px, 4vw, 28px);
+    color: #00f2fe;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+.download-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(12px, 2.5vw, 15px);
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 25px;
+    letter-spacing: 1px;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 190px;
+    box-sizing: border-box;
+}
+
+.download-btn svg {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.download-btn-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.download-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.6;
+}
+
+.download-platform {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Platform-specific accent colors */
+.download-btn.windows:hover {
+    border-color: #00a4ef;
+    background: rgba(0, 164, 239, 0.15);
+    box-shadow: 0 0 20px rgba(0, 164, 239, 0.25), inset 0 0 15px rgba(0, 164, 239, 0.08);
+    transform: translateY(-4px);
+}
+
+.download-btn.mac:hover {
+    border-color: #a2aaad;
+    background: rgba(162, 170, 173, 0.15);
+    box-shadow: 0 0 20px rgba(162, 170, 173, 0.25), inset 0 0 15px rgba(162, 170, 173, 0.08);
+    transform: translateY(-4px);
+}
+
+.download-btn.linux:hover {
+    border-color: #f5a623;
+    background: rgba(245, 166, 35, 0.15);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.25), inset 0 0 15px rgba(245, 166, 35, 0.08);
+    transform: translateY(-4px);
+}
+
+.download-btn:hover svg {
+    transform: scale(1.15);
+}
+
+.download-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
 @media (max-width: 768px) {
     .content-wrapper {
         flex-direction: column;
@@ -163,6 +277,32 @@ body {
         border-width: 3px;
         border-radius: 15px;
         width: 95vw;
+    }
+    .download-section {
+        margin-top: 30px;
+        padding: 20px 15px;
+    }
+    .download-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .download-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .download-btn {
+        min-width: unset;
+        padding: 10px 16px;
+        gap: 10px;
+    }
+    .download-platform {
+        font-size: 14px;
     }
 }
 
