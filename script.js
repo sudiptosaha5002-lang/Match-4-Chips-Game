@@ -161,3 +161,8 @@ function restartgame() {
         window.close();  
     }
 }
+
+// Trigger setup on load
+$(document).ready(function() {
+    startgame();
+});
