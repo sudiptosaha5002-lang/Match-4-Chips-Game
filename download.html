@@ -10,7 +10,49 @@
     <link rel="manifest" href="manifest.json">
     <title>Download - MATCH 4 CHIPS</title>
     <style>
-        /* Custom adjustments for the download page to match game layout */
+        body {
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            color: #00f2fe;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .back-btn:hover {
+            background: #00f2fe;
+            color: #0f172a;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+            transform: translateX(5px);
+        }
+        .download-page-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
         .download-container-box {
             background: rgba(0, 255, 255, 0.1);
             border: 5px solid rgb(255, 252, 252);
@@ -22,21 +64,18 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-        
         .download-btn-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
             width: 100%;
         }
-
         @media (min-width: 1000px) {
             .download-btn-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .download-btn.windows { grid-column: span 2; } /* Make windows button wide */
+            .install-btn-main { grid-column: span 2; }
         }
-
         .back-home-btn {
             display: inline-flex;
             align-items: center;
@@ -52,26 +91,36 @@
             transition: all 0.2s ease;
             margin-top: 20px;
         }
-
         .back-home-btn:hover {
             transform: translateY(-3px);
             background: #fff;
             color: #0f172a;
+        }
+        /* Custom alert for iPhone */
+        #ios-notice {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #fff;
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <canvas id="bg"></canvas>
     
-    <!-- Using the same logo structure as index.html -->
     <div class="logo" style="text-align: left; padding-left: 5vw; margin-top: 20px;">
         <img src="logo.png" class="logo1" />
     </div>
 
     <div class="content-wrapper" style="margin-top: 0;">
         <div class="intro">
-            <h1 style="font-size: clamp(32px, 8vw, 50px);">DOWNLOAD</h1>
-            <h2 style="margin-bottom: 30px;">Choose your platform to play offline!</h2>
+            <h1 style="font-size: clamp(32px, 8vw, 50px);">INSTALL</h1>
+            <h2 style="margin-bottom: 30px;">Install the app to play offline anywhere!</h2>
             
             <div class="btn-group">
                 <a href="index.html" class="back-home-btn">
@@ -82,48 +131,91 @@
         </div>
 
         <div class="download-container-box">
-            <div class="download-btn-grid">
-                <a href="https://github.com/sudiptosaha5002-lang/Match-4-Chips-Game/archive/refs/heads/main.zip" class="download-btn windows" download>
+            <div class="download-btn-grid" id="install-container">
+                <!-- Direct Install Button -->
+                <button id="install-btn" class="download-btn windows install-btn-main" style="width: 100%; border: 3px solid #00f2fe; background: rgba(0, 242, 254, 0.15);">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <div class="download-btn-text">
+                        <span class="download-label">Direct Install</span>
+                        <span class="download-platform">WEB APP</span>
+                    </div>
+                </button>
+
+                <p style="color: rgba(255,255,255,0.6); grid-column: span 2; font-family: 'Orbitron', sans-serif; font-size: 12px; margin: 10px 0;">Or use platform specific options:</p>
+
+                <button class="download-btn windows platform-install">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
                     <div class="download-btn-text">
-                        <span class="download-label">Download for</span>
+                        <span class="download-label">Install for</span>
                         <span class="download-platform">Windows</span>
                     </div>
-                </a>
-                <a href="https://github.com/sudiptosaha5002-lang/Match-4-Chips-Game/archive/refs/heads/main.zip" class="download-btn mac" download>
+                </button>
+                <button class="download-btn mac platform-install">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     <div class="download-btn-text">
-                        <span class="download-label">Download for</span>
+                        <span class="download-label">Install for</span>
                         <span class="download-platform">macOS</span>
                     </div>
-                </a>
-                <a href="https://github.com/sudiptosaha5002-lang/Match-4-Chips-Game/archive/refs/heads/main.zip" class="download-btn linux" download>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.2-.868-.134-2.138-.934-3.674-.466-.902-1.005-1.602-1.607-2.169-.625-.6-1.277-1.2-1.774-1.866-.497-.669-.849-1.471-1.108-2.723-.106-.567-.132-1.143-.123-1.522-.013-.468-.088-.99-.384-1.413-.315-.449-.77-.601-1.28-.543zm-.034 1.07c.455-.063.795.128.988.417.19.29.267.678.282 1.119.013.466.006 1.066.119 1.676.256 1.307.638 2.186 1.196 2.936.557.749 1.226 1.399 1.849 1.996.57.545 1.067 1.176 1.491 2.003.753 1.447.826 2.59 1.007 3.384.09.397.2.785.463 1.076.06.06.127.117.18.164-.141.349-.41.553-.689.706-.652.382-1.802.742-2.504 1.594-.604.71-1.336 1.102-1.97 1.152-.63.047-1.167-.192-1.458-.79-.276-.569-.465-1.193-.613-1.79-.146-.59-.27-1.164-.425-1.557-.339-.86-.858-1.306-1.459-1.532-.303-.13-.64-.2-1.003-.2h-.002c-.341 0-.68.07-.967.185-.6.21-1.095.637-1.418 1.478-.15.388-.266.958-.401 1.545-.136.59-.312 1.21-.576 1.768-.28.586-.808.82-1.431.872-.624.05-1.36-.14-2.04-.508a10.484 10.484 0 01-.122-.063c-.724-.399-1.779-.347-2.565-.537-.379-.1-.614-.218-.718-.411-.104-.193-.133-.525.107-1.1.155-.37.152-.784.098-1.208-.055-.426-.123-.795-.18-1.155-.025-.124-.046-.324-.043-.508.004-.193.038-.376.113-.536.056-.12.203-.249.461-.363.326-.143.753-.233 1.006-.49.26-.265.46-.573.674-.854.214-.285.378-.583.502-.95.087-.233.195-.597.277-.96-.038-.753.008-1.548.278-2.36.544-1.638 1.71-3.265 2.566-4.28.695-.863.95-1.838 1.035-2.99.072-1.542-.138-4.613 2.76-4.88z"/></svg>
-                    <div class="download-btn-text">
-                        <span class="download-label">Download for</span>
-                        <span class="download-platform">Linux</span>
-                    </div>
-                </a>
-                <a href="https://match4chipss.netlify.app/" class="download-btn android" target="_blank">
+                </button>
+                <button class="download-btn android platform-install">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.341a1.015 1.015 0 01-1.016-1.016c0-.562.453-1.015 1.016-1.015a1.015 1.015 0 11-.001 2.031zm-11.046 0a1.015 1.015 0 01-1.016-1.016c0-.562.453-1.015 1.016-1.015a1.015 1.015 0 11-.001 2.031zm11.405-6.02l1.96-3.396a.416.416 0 00-.152-.567.416.416 0 00-.567.152l-1.986 3.44A12.306 12.306 0 0012 7.467c-1.812 0-3.521.393-5.137 1.483L4.877 5.51a.416.416 0 00-.567-.152.416.416 0 00-.152.567l1.96 3.396C2.689 11.435.482 15.068.482 19.241h23.036c0-4.173-2.207-7.806-5.636-9.92z"/></svg>
                     <div class="download-btn-text">
-                        <span class="download-label">Play on</span>
+                        <span class="download-label">Install for</span>
                         <span class="download-platform">Android</span>
                     </div>
-                </a>
-                <a href="https://match4chipss.netlify.app/" class="download-btn iphone" target="_blank">
+                </button>
+                <button class="download-btn iphone" id="iphone-btn">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                     <div class="download-btn-text">
-                        <span class="download-label">Play on</span>
+                        <span class="download-label">Install for</span>
                         <span class="download-platform">iPhone</span>
                     </div>
-                </a>
+                </button>
+
+                <div id="ios-notice">
+                    📱 **On iPhone/iPad:** Tap the **Share** button in Safari (box with arrow) and select **"Add to Home Screen"**.
+                </div>
             </div>
         </div>
     </div>
 
     <script src="bgscript.js"></script>
     <script>
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-btn');
+        const platformBtns = document.querySelectorAll('.platform-install');
+        const iphoneBtn = document.getElementById('iphone-btn');
+        const iosNotice = document.getElementById('ios-notice');
+
+        // Capture the install prompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show the install button now that the event is captured
+            console.log('Install prompt captured');
+        });
+
+        async function triggerInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to install prompt: ${outcome}`);
+                deferredPrompt = null;
+            } else {
+                alert("Installation is handled by your browser. Look for an 'Install' or 'Add to Home Screen' option in your browser menu!");
+            }
+        }
+
+        // Add listeners to all relevant buttons
+        installBtn.addEventListener('click', triggerInstall);
+        platformBtns.forEach(btn => btn.addEventListener('click', triggerInstall));
+
+        iphoneBtn.addEventListener('click', () => {
+            iosNotice.style.display = 'block';
+            iosNotice.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
