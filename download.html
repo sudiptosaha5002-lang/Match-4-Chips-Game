@@ -208,9 +208,15 @@
             }
         }
 
-        // Add listeners to all relevant buttons
+        // Add listeners
         installBtn.addEventListener('click', triggerInstall);
-        platformBtns.forEach(btn => btn.addEventListener('click', triggerInstall));
+        
+        // Platform buttons show Coming Soon
+        platformBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                alert("Coming Soon!!!\nPlatform-specific native apps are currently in development. Please use the 'Direct Install' button above to install the Web App version!");
+            });
+        });
 
         iphoneBtn.addEventListener('click', () => {
             iosNotice.style.display = 'block';
