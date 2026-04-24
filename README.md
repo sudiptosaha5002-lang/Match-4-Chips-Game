@@ -19,8 +19,9 @@ All age groups can play this game. Works on both **Desktop** & **Mobile** platfo
 
 ## 🚀 How to Start
 
-1. Click the **START** button.
-2. You'll be prompted to enter details for both players:
+1. When the page loads, the game will **automatically prompt** you to enter details for both players.
+2. If you close the prompts without finishing or want to change names later, click the **START** button.
+3. **Enforced Setup:** You **must** complete the player details for both players before the board becomes active. If you try to click the board before setup, you will be reminded to click START.
 
 | Prompt | What to Enter | Example |
 |---|---|---|
@@ -29,7 +30,7 @@ All age groups can play this game. Works on both **Desktop** & **Mobile** platfo
 | Player 2 Name | Any name | `Bob` |
 | Player 2 Color | `red`, `blue`, `green`, `yellow`, or `pink` | `pink` |
 
-3. After setup, the **START button** updates to show whose turn it is (e.g., `Alice Your Turn!!`).
+4. After setup, the **START button** updates to show whose turn it is (e.g., `Alice Your Turn!!`).
 
 > 💡 **Tip:** Choose **different colors** for each player so you can easily tell the chips apart on the board!
 
@@ -99,7 +100,7 @@ An alert announces: **"💥 BOOM! Bomb hit! [Your Name] WINS THE GAME!"**
 
 1. Click the **RESTART** button at any time.
 2. A confirmation dialog asks: *"Do you want to play again?"*
-   - **OK** → The board clears and resets. Click START to begin a new game.
+   - **OK** → The board clears and resets. The game will automatically prompt you for new names.
    - **Cancel** → A "Thanks for playing!" message appears.
 
 ---
