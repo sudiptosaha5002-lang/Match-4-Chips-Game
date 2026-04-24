@@ -382,3 +382,160 @@ body {
     background-color: #00f2fe;
     box-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe;
 }
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 30, 0.9);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.5s ease;
+}
+
+.modal-content {
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px solid #00f2fe;
+    border-radius: 24px;
+    padding: 40px;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0, 242, 254, 0.3), inset 0 0 20px rgba(0, 242, 254, 0.1);
+    animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(50px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00f2fe;
+    font-size: 32px;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+}
+
+.player-inputs {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.player-config {
+    flex: 1;
+    min-width: 250px;
+    text-align: left;
+}
+
+.player-config h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.player-config input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: 12px;
+    padding: 12px 15px;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.player-config input:focus {
+    outline: none;
+    border-color: #00f2fe;
+    background: rgba(0, 242, 254, 0.1);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.color-selection {
+    margin-top: 20px;
+}
+
+.color-selection label {
+    display: block;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.color-options {
+    display: flex;
+    gap: 12px;
+}
+
+.color-opt {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.color-opt:hover {
+    transform: scale(1.15);
+}
+
+.color-opt.selected {
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.play-now-btn {
+    background: #00f2fe;
+    color: #0f172a;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 48px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+}
+
+.play-now-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 242, 254, 0.7);
+    letter-spacing: 5px;
+}
+
+.play-now-btn:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 25px;
+    }
+    .player-inputs {
+        gap: 20px;
+    }
+    .modal-content h2 {
+        font-size: 24px;
+    }
+}

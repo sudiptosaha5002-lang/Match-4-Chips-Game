@@ -5,6 +5,7 @@ var player1Color = 'rgb(86, 151, 255)';
 var player2Color = 'rgb(255, 10, 194)';
 var bombRow;
 var bombCol;
+var gameStarted = false;
 
 
 var currentPlayer = 1;
@@ -13,32 +14,53 @@ var currentColor = player1Color;
 
 var table = $('table tr');
 
+// Handle Color Selection in Modal
+$('.color-opt').on('click', function() {
+    $(this).siblings().removeClass('selected');
+    $(this).addClass('selected');
+    
+    const parentId = $(this).parent().attr('id');
+    if (parentId === 'p1colors') {
+        player1Color = $(this).data('color');
+    } else {
+        player2Color = $(this).data('color');
+    }
+});
 
-function startgame() {
-    var p1 = prompt("Enter Player-1 name>>");
-    if (!p1 || p1.trim() === "") { alert("Player 1 name is required!"); return; }
+function submitDetails() {
+    var p1 = $('#p1name').val().trim();
+    var p2 = $('#p2name').val().trim();
 
-    var p1c = prompt("Choose Player-1 color (red / blue / green / yellow / pink)","blue");
-    if (!p1c || p1c.trim() === "") { alert("Player 1 color is required!"); return; }
+    if (!p1 || !p2) {
+        alert("Please enter names for both players!");
+        return;
+    }
 
-    var p2 = prompt("Enter Player-2 name>>");
-    if (!p2 || p2.trim() === "") { alert("Player 2 name is required!"); return; }
-
-    var p2c = prompt("Choose Player-2 color (red / blue / green / yellow / pink)","pink");
-    if (!p2c || p2c.trim() === "") { alert("Player 2 color is required!"); return; }
+    if (player1Color === player2Color) {
+        alert("Players must choose different colors!");
+        return;
+    }
 
     player1 = p1;
-    player1Color = p1c;
     player2 = p2;
-    player2Color = p2c;
-
+    
+    gameStarted = true;
     currentPlayer = 1;
     currentName = player1;
     currentColor = player1Color;
 
+    $('#playerModal').css('display', 'none');
     $('.sbtn').text(currentName + " Your Turn!!");
+    
+    // Set random bomb location
     bombRow = Math.floor(Math.random() * table.length);
     bombCol = Math.floor(Math.random() * 7);
+}
+
+function startgame() {
+    if (!gameStarted) {
+        $('#playerModal').css('display', 'flex');
+    }
 }
 
 function changeColor(rownum, colnum, color) {
@@ -98,6 +120,10 @@ function DWincheck() {
 }
 
 $('.board button').on('click', function () {
+    if (!gameStarted) {
+        alert("Please click START and enter player details first!");
+        return;
+    }
 
     var col = $(this).closest('td').index();
     var bottomA = checkBottom(col);
@@ -146,6 +172,8 @@ function restartgame() {
     if (again) {
         $('.board button').css('background-color', 'rgb(125, 121, 121)');
         $('.sbtn').text("START");
+        gameStarted = false;
+        $('#playerModal').css('display', 'flex');
     } 
     else
     {
@@ -153,3 +181,8 @@ function restartgame() {
         window.close();  
     }
 }
+
+// Show modal on load
+$(document).ready(function() {
+    $('#playerModal').css('display', 'flex');
+});
