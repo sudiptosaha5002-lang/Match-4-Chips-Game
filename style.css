@@ -149,6 +149,47 @@ body {
     display: block;
 }
 
+
+/* Download CTA on Main Page */
+.download-cta {
+    margin: 30px auto;
+    text-align: center;
+}
+
+.download-game-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 30px;
+    background: rgba(0, 242, 254, 0.1);
+    border: 2px solid #00f2fe;
+    border-radius: 50px;
+    color: #00f2fe;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+.download-game-btn:hover {
+    background: #00f2fe;
+    color: #0f172a;
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
+}
+
+.download-game-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.download-game-btn:hover svg {
+    transform: translateY(2px);
+}
+
 /* Download Section */
 .download-section {
     width: 95vw;
